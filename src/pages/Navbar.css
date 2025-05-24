@@ -1,0 +1,137 @@
+/* Navbar base styles */
+.glass-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.glass-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.glass-navbar-logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  user-select: none;
+  z-index: 1001;
+}
+
+/* Hamburger Button */
+.glass-navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 22px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1001;
+}
+
+.glass-navbar-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #111;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* X Animation */
+.glass-navbar-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.glass-navbar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.glass-navbar-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Desktop Menu */
+.glass-navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.glass-navbar-menu li a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.glass-navbar-menu li a:hover {
+  color: #2ecc71;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .glass-navbar-toggle {
+    display: flex;
+  }
+
+  .glass-navbar-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .glass-navbar-menu.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .glass-navbar-menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .glass-navbar-menu li a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    padding: 0.75rem 0;
+    display: block;
+  }
+
+  .glass-navbar-menu li a:hover {
+    color: #2ecc71;
+  }
+}

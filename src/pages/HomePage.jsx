@@ -22,7 +22,7 @@ const HomePage = () => {
       >
         <div className="w-65 h-65 rounded-full overflow-hidden border-4 border-green-200 mt-10">
           <img
-            src="/profile.jpg"
+            src="/favicon.png"
             loading="lazy"
             alt="Profile portrait of Dipak Mundhe"
             className="w-full h-full object-cover"

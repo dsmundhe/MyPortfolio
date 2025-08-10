@@ -23,6 +23,7 @@ const HomePage = () => {
         <div className="w-65 h-65 rounded-full overflow-hidden border-4 border-green-200">
           <img
             src="/profile.jpg"
+            loading="lazy"
             alt="Profile portrait of Dorbesh Baba"
             className="w-full h-full object-cover"
           />

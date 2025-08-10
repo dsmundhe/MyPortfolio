@@ -8,7 +8,6 @@ import MySkills from "./pages/MySkills";
 import Footer from "./pages/Footer";
 import Loader from "./pages/Loader";
 import AboutPage from "./pages/AboutPage";
-import { motion } from "framer-motion";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -18,12 +17,6 @@ function App() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Animation settings
-  const sectionVariant = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-  };
-
   return (
     <div>
       {loading ? (
@@ -32,56 +25,27 @@ function App() {
         <>
           <Navbar />
 
-          <motion.div
-            id="home"
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div id="home">
             <HomePage />
-          </motion.div>
+          </div>
 
-          <motion.div
-            id="skills"
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div id="skills">
             <MySkills />
-          </motion.div>
+          </div>
 
-          <motion.div
-            id="projects"
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div id="projects">
             <ProjectsPage />
-          </motion.div>
+          </div>
 
-          <motion.div
-            id="contact"
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div id="contact">
             <ContactPage />
-          </motion.div>
+          </div>
 
           <AboutPage />
 
-          <motion.div
-            variants={sectionVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <div>
             <Footer />
-          </motion.div>
+          </div>
         </>
       )}
     </div>

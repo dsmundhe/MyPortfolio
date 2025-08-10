@@ -23,13 +23,21 @@
 
 /* Logo */
 .glass-navbar-logo {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #111;
+  font-size: 1.4rem; /* smaller but still visible */
+  font-weight: 800;
+  letter-spacing: 0.5px;
   text-decoration: none;
-  user-select: none;
-  z-index: 1001;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
+
+.glass-navbar-logo:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 
 /* Hamburger Button */
 .glass-navbar-toggle {

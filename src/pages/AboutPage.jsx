@@ -18,16 +18,16 @@ const AboutPage = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-500">
-          About Me & Achievements
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-[#0F2027] via-[#2C5364] to-[#FFD700]">
+          About Me & My Achievements
         </h2>
 
         {/* Intro Text */}
         <p className="max-w-3xl mx-auto text-center text-gray-700 text-base sm:text-lg leading-relaxed mb-12">
           Passionate MERN stack developer with a flair for creating scalable web
-          applications and engaging user experiences. Beyond coding, I
-          actively participate in hackathons and events to challenge myself,
-          learn, and grow.
+          applications and engaging user experiences. Beyond coding, I actively
+          participate in hackathons and events to challenge myself, learn, and
+          grow.
         </p>
 
         {/* Gallery */}
@@ -47,34 +47,40 @@ const AboutPage = () => {
         </div>
 
         {/* Achievements / Events */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
           {/* Hackathons */}
-          <div className="flex flex-col items-center gap-3 p-5 border-l-4 border-gradient-to-r from-green-400 to-blue-500 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <FaTrophy className="text-3xl sm:text-4xl text-green-500" />
-            <h3 className="text-lg sm:text-xl font-semibold text-center">Hackathons</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Participated in 5+ hackathons with awards in 2, showcasing my
-              problem-solving skills and teamwork.
+          <div className="flex flex-col items-center gap-3 p-6 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border-t-4 border-transparent hover:border-t-4 hover:border-blue-500 transition-all duration-300">
+            <FaTrophy className="text-3xl sm:text-4xl text-blue-500" />
+            <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-800">
+              Hackathons
+            </h3>
+            <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
+              Participated in 5+ hackathons, earning awards in 2 — demonstrating
+              strong problem-solving and teamwork.
             </p>
           </div>
 
           {/* Events */}
-          <div className="flex flex-col items-center gap-3 p-5 border-l-4 border-gradient-to-r from-green-400 to-blue-500 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <FaCalendarAlt className="text-3xl sm:text-4xl text-blue-500" />
-            <h3 className="text-lg sm:text-xl font-semibold text-center">Events</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Attended numerous tech conferences and workshops to stay updated
-              with industry trends.
+          <div className="flex flex-col items-center gap-3 p-6 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border-t-4 border-transparent hover:border-t-4 hover:border-indigo-500 transition-all duration-300">
+            <FaCalendarAlt className="text-3xl sm:text-4xl text-indigo-500" />
+            <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-800">
+              Events
+            </h3>
+            <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
+              Engaged in multiple tech conferences & workshops to stay ahead
+              with evolving industry trends.
             </p>
           </div>
 
           {/* Innovations */}
-          <div className="flex flex-col items-center gap-3 p-5 border-l-4 border-gradient-to-r from-green-400 to-blue-500 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <FaLightbulb className="text-3xl sm:text-4xl text-yellow-400" />
-            <h3 className="text-lg sm:text-xl font-semibold text-center">Innovations</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Developed unique projects incorporating AI and automation to
-              improve user experience.
+          <div className="flex flex-col items-center gap-3 p-6 bg-white/90 backdrop-blur-sm rounded-xl shadow-md border-t-4 border-transparent hover:border-t-4 hover:border-amber-500 transition-all duration-300">
+            <FaLightbulb className="text-3xl sm:text-4xl text-amber-500" />
+            <h3 className="text-lg sm:text-xl font-semibold text-center text-gray-800">
+              Innovations
+            </h3>
+            <p className="text-gray-600 text-center text-sm sm:text-base leading-relaxed">
+              Created innovative projects using AI & automation, enhancing user
+              experience and efficiency.
             </p>
           </div>
         </div>

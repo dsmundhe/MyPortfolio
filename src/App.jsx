@@ -7,14 +7,22 @@ import ContactPage from "./pages/ContactPage";
 import MySkills from "./pages/MySkills";
 import Footer from "./pages/Footer";
 import Loader from "./pages/Loader";
-import AboutPage from "./pages/AboutPage"
+import AboutPage from "./pages/AboutPage";
+import { motion } from "framer-motion";
+
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 2000); // 2 seconds delay
+    const timeout = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timeout);
   }, []);
+
+  // Animation settings
+  const sectionVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
 
   return (
     <div>
@@ -23,22 +31,57 @@ function App() {
       ) : (
         <>
           <Navbar />
-          <div id="home">
+
+          <motion.div
+            id="home"
+            variants={sectionVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <HomePage />
-          </div>
-          <div id="skills">
+          </motion.div>
+
+          <motion.div
+            id="skills"
+            variants={sectionVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <MySkills />
-          </div>
-          <div id="projects">
+          </motion.div>
+
+          <motion.div
+            id="projects"
+            variants={sectionVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <ProjectsPage />
-          </div>
-          <div id="contact">
+          </motion.div>
+
+          <motion.div
+            id="contact"
+            variants={sectionVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <ContactPage />
-          </div>
-          <div id="about">
-            <AboutPage />
-          </div>
-          <Footer />
+          </motion.div>
+
+          <AboutPage />
+
+          <motion.div
+            variants={sectionVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <Footer />
+          </motion.div>
         </>
       )}
     </div>

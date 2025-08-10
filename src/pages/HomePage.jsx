@@ -20,11 +20,11 @@ const HomePage = () => {
         transition={{ duration: 0.8 }}
         className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center w-full max-w-sm flex-1 h-full"
       >
-        <div className="w-65 h-65 rounded-full overflow-hidden border-4 border-green-200">
+        <div className="w-65 h-65 rounded-full overflow-hidden border-4 border-green-200 mt-10">
           <img
             src="/profile.jpg"
             loading="lazy"
-            alt="Profile portrait of Dorbesh Baba"
+            alt="Profile portrait of Dipak Mundhe"
             className="w-full h-full object-cover"
           />
         </div>

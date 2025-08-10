@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="glass-navbar">
       <div className="glass-navbar-container">
         <a href="#home" className="glass-navbar-logo">
-          MyPortfolio
+          DM's Portfolio
         </a>
 
         <div

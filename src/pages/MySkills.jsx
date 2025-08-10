@@ -3,23 +3,34 @@ import React from "react";
 const skills = [
   {
     category: "Frontend",
-    items: ["HTML", "CSS", "JavaScript", "React.js", "Redux.js", "Tailwind CSS"],
+    items: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React.js",
+      "Redux.js",
+      "Tailwind CSS",
+    ],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express.js"],
+    items: ["Node.js", "Express.js", "JWT Token", "MongoDB"],
+  },
+  {
+    category: "Programming",
+    items: ["C", "Java", "JavaScript"],
   },
   {
     category: "Database",
     items: ["MongoDB", "SQL"],
   },
   {
-    category: "Programming",
-    items: ["C", "Java"],
+    category: "Cloud Computing and Devops",
+    items: ["AWS", "Git", "GitHub", "Linux Basics"],
   },
   {
     category: "Tools & Others",
-    items: ["Git", "GitHub", "VS Code", "Netlify", "Postman"],
+    items: ["VS Code", "Netlify", "Postman", "Vercel", "Render"],
   },
 ];
 

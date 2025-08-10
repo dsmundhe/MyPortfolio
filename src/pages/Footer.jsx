@@ -105,7 +105,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Dorbesh Baba. All rights reserved.
+        © {new Date().getFullYear()} Dipak Mundhe. All rights reserved.
       </div>
     </footer>
   );

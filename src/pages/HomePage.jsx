@@ -81,7 +81,16 @@ const HomePage = () => {
         className="bg-white rounded-2xl shadow-md p-8 w-full max-w-3xl flex-1 h-full flex flex-col justify-between"
       >
         <div>
-          <p className="text-sm text-gray-500">Hello There!</p>
+          <p className="text-sm text-gray-500">
+            <a
+           
+              href="https://my-words-dictionary-frontend.vercel.app/"
+              target="_blank"
+            >
+              Hello
+            </a>{" "}
+            There!
+          </p>
           <h1 className="text-3xl md:text-5xl font-extrabold leading-snug mt-3">
             I'M{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-700">

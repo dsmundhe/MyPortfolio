@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 px-6 md:px-20">
+    <footer className="bg-[#0b0b0b] text-gray-300 py-10 px-6 md:px-20">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
         
         {/* Logo & Description */}
@@ -82,7 +82,7 @@ const Footer = () => {
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.036-1.85-3.036-1.851 0-2.134 1.445-2.134 2.939v5.666H9.358V9h3.415v1.561h.05c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.266 2.37 4.266 5.451v6.29zM5.337 7.433a2.062 2.062 0 110-4.123 2.062 2.062 0 010 4.123zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.73v20.54c0 .957.792 1.73 1.771 1.73h20.451c.978 0 1.778-.773 1.778-1.73V1.73c0-.956-.8-1.73-1.778-1.73z" />
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.036-1.85-3.036-1.851 0-2.134 1.445-2.134 2.939v5.666H9.358V9h3.415v1.561h.50c.476-.9 1.637-1.85 3.368-1.85 3.6 0 4.266 2.37 4.266 5.451v6.29zM5.337 7.433a2.062 2.062 0 110-4.123 2.062 2.062 0 010 4.123zM7.119 20.452H3.554V9h3.565v11.452z" />
               </svg>
             </a>
             <a
@@ -104,7 +104,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+      <div className="mt-10 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Dipak Mundhe. All rights reserved.
       </div>
     </footer>

@@ -8,15 +8,17 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  // Close menu on link click
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
   return (
-    <nav className="glass-navbar">
+    <nav className="glass-navbar dark-navbar bg-[#0d0d0d]/70 backdrop-blur-md shadow-lg border-b border-gray-800">
       <div className="glass-navbar-container">
-        <a href="#home" className="glass-navbar-logo">
+        <a
+          href="#home"
+          className="glass-navbar-logo dark-logo text-gray-100 hover:text-green-400 transition"
+        >
           DM's Portfolio
         </a>
 
@@ -28,34 +30,56 @@ export default function Navbar() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && toggleMenu()}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className="bg-gray-300"></span>
+          <span className="bg-gray-300"></span>
+          <span className="bg-gray-300"></span>
         </div>
 
-        <ul className={`glass-navbar-menu ${isOpen ? "open" : ""}`}>
+        <ul
+          className={`glass-navbar-menu ${isOpen ? "open" : ""} dark-menu bg-[#111]/90 border border-gray-800 shadow-xl`}
+        >
           <li>
-            <a href="#home" onClick={handleLinkClick}>
+            <a
+              href="#home"
+              onClick={handleLinkClick}
+              className="dark-link text-gray-200 hover:text-green-400"
+            >
               Home
             </a>
           </li>
           <li>
-            <a href="#skills" onClick={handleLinkClick}>
+            <a
+              href="#skills"
+              onClick={handleLinkClick}
+              className="dark-link text-gray-200 hover:text-green-400"
+            >
               Skills
             </a>
           </li>
           <li>
-            <a href="#projects" onClick={handleLinkClick}>
+            <a
+              href="#projects"
+              onClick={handleLinkClick}
+              className="dark-link text-gray-200 hover:text-green-400"
+            >
               Projects
             </a>
           </li>
-           <li>
-            <a href="#contact" onClick={handleLinkClick}>
+          <li>
+            <a
+              href="#contact"
+              onClick={handleLinkClick}
+              className="dark-link text-gray-200 hover:text-green-400"
+            >
               Contact
             </a>
           </li>
           <li>
-            <a href="#about" onClick={handleLinkClick}>
+            <a
+              href="#about"
+              onClick={handleLinkClick}
+              className="dark-link text-gray-200 hover:text-green-400"
+            >
               About
             </a>
           </li>

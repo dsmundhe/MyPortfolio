@@ -50,17 +50,16 @@ const projects = [
     repo: "https://github.com/dsmundhe/Web-wizards.git",
   },
   {
-  id: 6,
-  title: "Corp Prediction",
-  category: "AI/ML",
-  image: "https://i.pinimg.com/736x/29/a9/98/29a998826a0e77d8c2a7469cec1bf6ea.jpg", // Update with your actual image path
-  demo: "https://croppredictionycceiot.netlify.app/", // Replace with your actual live demo link
-  repo: "https://github.com/dsmundhe/Crop_Prediction-.git", // Replace with your actual GitHub repo link
-}
-
+    id: 6,
+    title: "Corp Prediction",
+    category: "AI/ML",
+    image: "https://i.pinimg.com/736x/29/a9/98/29a998826a0e77d8c2a7469cec1bf6ea.jpg",
+    demo: "https://croppredictionycceiot.netlify.app/",
+    repo: "https://github.com/dsmundhe/Crop_Prediction-.git",
+  },
 ];
 
-const categories = ["Show All", "Web App", "MERN", "E-commerce", "AI Chatbot", "EdTech" ,"AI/ML"];
+const categories = ["Show All", "Web App", "MERN", "E-commerce", "AI Chatbot", "EdTech", "AI/ML"];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("Show All");
@@ -71,10 +70,10 @@ export default function ProjectsPage() {
       : projects.filter((proj) => proj.category === activeCategory);
 
   return (
-    <section className="py-12 px-4 md:px-16">
+    <section className="py-12 px-4 md:px-16 bg-gray-900 text-white">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold mb-4">Works & Projects</h2>
-        <p className="text-gray-700 max-w-xl mx-auto">
+        <p className="text-gray-300 max-w-xl mx-auto">
           Explore a selection of my most meaningful work—each project showcases unique features,
           technologies, and design precision crafted with passion and purpose.
         </p>
@@ -87,8 +86,8 @@ export default function ProjectsPage() {
             onClick={() => setActiveCategory(category)}
             className={`px-4 py-2 text-sm font-medium transition ${
               activeCategory === category
-                ? "text-green-700 border-b-2 border-green-700"
-                : "text-gray-600 hover:text-green-700"
+                ? "text-green-400 border-b-2 border-green-400"
+                : "text-gray-300 hover:text-green-400"
             }`}
           >
             {category}
@@ -100,17 +99,16 @@ export default function ProjectsPage() {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 group"
+            className="bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 group"
           >
             <div className="relative">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-cover opacity-90"
               />
 
-              {/* Hover Buttons (laptop) */}
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex-col justify-center items-center gap-2 opacity-0 group-hover:opacity-100 transition sm:flex hidden">
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex-col justify-center items-center gap-2 opacity-0 group-hover:opacity-100 transition sm:flex hidden">
                 <a
                   href={project.demo}
                   target="_blank"
@@ -130,8 +128,7 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            {/* Always visible buttons (mobile) */}
-            <div className="sm:hidden flex justify-center gap-4 py-2 bg-white">
+            <div className="sm:hidden flex justify-center gap-4 py-2 bg-gray-800">
               <a
                 href={project.demo}
                 target="_blank"
@@ -151,8 +148,8 @@ export default function ProjectsPage() {
             </div>
 
             <div className="p-4">
-              <p className="text-sm text-gray-500">{project.category}</p>
-              <h3 className="text-lg font-semibold">{project.title}</h3>
+              <p className="text-sm text-gray-400">{project.category}</p>
+              <h3 className="text-lg font-semibold text-white">{project.title}</h3>
             </div>
           </div>
         ))}

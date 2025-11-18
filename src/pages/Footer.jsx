@@ -1,4 +1,5 @@
 import React from "react";
+import CircularGallery from "./CircularGallery/CircularGallery";
 
 const Footer = () => {
   return (
@@ -103,6 +104,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      
 
       <div className="mt-10 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Dipak Mundhe. All rights reserved.

@@ -1,4 +1,5 @@
 import React from "react";
+import CircularGallery from "./CircularGallery/CircularGallery";
 import { FaTrophy, FaCalendarAlt, FaLightbulb } from "react-icons/fa";
 
 const AboutPage = () => {
@@ -30,9 +31,17 @@ const AboutPage = () => {
           grow.
         </p>
 
+  <div style={{ height: "600px", position: "relative" }}>
+            <CircularGallery
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+            />
+          </div>
         {/* Gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto mb-16 px-2">
-          {galleryImages.map((img, idx) => (
+          {/* {galleryImages.map((img, idx) => (
             <div
               key={idx}
               className="relative rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer group"
@@ -43,7 +52,9 @@ const AboutPage = () => {
                 className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-          ))}
+          ))} */}
+
+         
         </div>
 
         {/* Achievements / Events */}

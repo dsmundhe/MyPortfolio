@@ -13,12 +13,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="glass-navbar dark-navbar bg-[#0d0d0d]/70 backdrop-blur-md shadow-lg border-b border-gray-800">
+    <nav className="glass-navbar dark-navbar">
       <div className="glass-navbar-container">
-        <a
-          href="#home"
-          className="glass-navbar-logo dark-logo text-gray-100 hover:text-green-400 transition"
-        >
+        <a href="#home" className="glass-navbar-logo dark-logo">
           DM's Portfolio
         </a>
 
@@ -30,56 +27,34 @@ export default function Navbar() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && toggleMenu()}
         >
-          <span className="bg-gray-300"></span>
-          <span className="bg-gray-300"></span>
-          <span className="bg-gray-300"></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
-        <ul
-          className={`glass-navbar-menu ${isOpen ? "open" : ""} dark-menu bg-[#111]/90 border border-gray-800 shadow-xl`}
-        >
+        <ul className={`glass-navbar-menu ${isOpen ? "open" : ""} dark-menu`}>
           <li>
-            <a
-              href="#home"
-              onClick={handleLinkClick}
-              className="dark-link text-gray-200 hover:text-green-400"
-            >
+            <a href="#home" onClick={handleLinkClick} className="dark-link">
               Home
             </a>
           </li>
           <li>
-            <a
-              href="#skills"
-              onClick={handleLinkClick}
-              className="dark-link text-gray-200 hover:text-green-400"
-            >
+            <a href="#skills" onClick={handleLinkClick} className="dark-link">
               Skills
             </a>
           </li>
           <li>
-            <a
-              href="#projects"
-              onClick={handleLinkClick}
-              className="dark-link text-gray-200 hover:text-green-400"
-            >
+            <a href="#projects" onClick={handleLinkClick} className="dark-link">
               Projects
             </a>
           </li>
           <li>
-            <a
-              href="#contact"
-              onClick={handleLinkClick}
-              className="dark-link text-gray-200 hover:text-green-400"
-            >
+            <a href="#contact" onClick={handleLinkClick} className="dark-link">
               Contact
             </a>
           </li>
           <li>
-            <a
-              href="#about"
-              onClick={handleLinkClick}
-              className="dark-link text-gray-200 hover:text-green-400"
-            >
+            <a href="#about" onClick={handleLinkClick} className="dark-link">
               About
             </a>
           </li>

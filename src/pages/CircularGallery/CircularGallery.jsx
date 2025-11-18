@@ -370,7 +370,7 @@ class App {
     const defaultItems = [
       { image: `/image1.jpg`, text: "VNIT Hackathon" },
       { image: `/image2.jpg`, text: "College Events" },
-      { image: `/image3.jpg`, text: "Green Grads" },
+      // { image: `/image3.jpg`, text: "Green Grads" },
       { image: `/image4.jpg`, text: "GH Raisoni Hackathon" },
       { image: `/image5.jpg`, text: "YCCE Hackathon" },
       { image: `/image6.jpg`, text: "YCCE Speech Event" },

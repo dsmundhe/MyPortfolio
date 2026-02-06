@@ -26,9 +26,13 @@ const HomePage = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col"
         >
-          <div className="inline-flex items-center gap-3 self-start rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-sky-500 dark:text-sky-300">
-            <span className="h-2 w-2 rounded-full bg-sky-400"></span>
-            Top 1% Product-Minded MERN Developer
+          <div className="inline-flex max-w-[90vw] flex-nowrap items-center gap-2 self-start overflow-hidden rounded-full border border-sky-400/40 bg-gradient-to-r from-sky-400/15 to-fuchsia-400/10 px-3 py-2 text-[10px] font-semibold uppercase leading-4 tracking-[0.1em] text-sky-500 shadow-[0_0_20px_rgba(56,189,248,0.25)] dark:text-sky-300 sm:max-w-none sm:gap-3 sm:px-4 sm:text-xs sm:tracking-[0.12em]">
+            <motion.span
+              className="h-2 w-2 min-h-[0.5rem] min-w-[0.5rem] rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.6)]"
+              animate={{ scale: [0.75, 1.2, 0.75] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <span className="truncate whitespace-nowrap">Live • Fresher MERN Developer • Open to Opportunities</span>
           </div>
           <h1 className="mt-6 font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
             Building{" "}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,57 +86,67 @@ export default function Navbar() {
 
       </div>
 
-      <div
-        className={`fixed inset-0 z-50 transition-opacity duration-300 ease-out ${
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      >
-        <button
-          type="button"
-          className={`absolute inset-0 h-full w-full bg-slate-900/30 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-slate-950/70 ${
-            isOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={toggleMenu}
-          aria-label="Close menu overlay"
-        />
-        <div
-          data-open={isOpen}
-          className="absolute right-6 top-6 z-10 w-[90vw] max-w-sm translate-y-2 rounded-3xl border border-slate-200 bg-white/95 p-6 text-slate-900 opacity-0 shadow-2xl transition-all duration-300 ease-out data-[open=true]:translate-y-0 data-[open=true]:opacity-100 dark:border-white/10 dark:bg-slate-950/95 dark:text-white"
-        >
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
-                Menu
-              </span>
-              <button
-                type="button"
-                onClick={toggleMenu}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:text-sky-500 dark:border-white/10 dark:text-white dark:hover:text-sky-300"
-                aria-label="Close menu"
-              >
-                ✕
-              </button>
-            </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <motion.button
+              type="button"
+              className="absolute inset-0 h-full w-full bg-slate-900/30 backdrop-blur-sm dark:bg-slate-950/70"
+              onClick={toggleMenu}
+              aria-label="Close menu overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            />
+            <motion.div
+              className="absolute right-6 top-6 z-10 w-[90vw] max-w-sm origin-top-right rounded-3xl border border-slate-200 bg-white/95 p-6 text-slate-900 shadow-2xl dark:border-white/10 dark:bg-slate-950/95 dark:text-white"
+              initial={{ opacity: 0, y: 12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 12, scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 320, damping: 26 }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
+                  Menu
+                </span>
+                <button
+                  type="button"
+                  onClick={toggleMenu}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:text-sky-500 dark:border-white/10 dark:text-white dark:hover:text-sky-300"
+                  aria-label="Close menu"
+                >
+                  X
+                </button>
+              </div>
 
-            <nav className="mt-6 flex flex-col gap-4 text-lg font-semibold">
-              <a href="#home" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
-                Home
-              </a>
-              <a href="#skills" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
-                Skills
-              </a>
-              <a href="#projects" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
-                Projects
-              </a>
-              <a href="#contact" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
-                Contact
-              </a>
-              <a href="#about" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
-                About
-              </a>
-            </nav>
-
-        </div>
-      </div>
+              <nav className="mt-6 flex flex-col gap-4 text-lg font-semibold">
+                <a href="#home" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                  Home
+                </a>
+                <a href="#skills" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                  Skills
+                </a>
+                <a href="#projects" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                  Projects
+                </a>
+                <a href="#contact" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                  Contact
+                </a>
+                <a href="#about" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                  About
+                </a>
+              </nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

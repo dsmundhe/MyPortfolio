@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") return "dark";
     const saved = window.localStorage.getItem("theme");
@@ -21,92 +21,120 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="site-nav">
-      <div className="nav-inner">
-        <a href="#home" className="nav-brand">
-          DM<span>.</span>
+    <nav
+      className={`fixed top-0 z-50 w-full backdrop-blur-xl transition ${
+        isScrolled
+          ? "bg-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.15)] dark:bg-slate-950/90 dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+          : "bg-white/70 dark:bg-slate-950/60"
+      }`}
+    >
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
+        <a href="#home" className="group inline-flex items-center gap-2">
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 text-[10px] font-bold text-slate-950 shadow-md shadow-sky-500/20 transition group-hover:-translate-y-0.5">
+            DM
+            <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border border-white/60 bg-slate-950 dark:bg-slate-100"></span>
+          </span>
+          <span className="flex flex-col leading-none">
+            <span className="text-xs font-semibold tracking-[0.18em] text-slate-900 dark:text-white">
+              DIPAK
+            </span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-slate-500 dark:text-slate-300">
+              MUNDHE
+            </span>
+          </span>
         </a>
 
-        <div
-          className={`nav-toggle ${isOpen ? "active" : ""}`}
+        <button
+          type="button"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-900 dark:border-white/10 dark:text-white"
           onClick={toggleMenu}
           aria-label="Toggle menu"
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && toggleMenu()}
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+          <span className="sr-only">Toggle menu</span>
+          <div className="space-y-1.5">
+            <span
+              className={`block h-0.5 w-6 bg-slate-900 transition dark:bg-white ${
+                isOpen ? "translate-y-2 rotate-45" : ""
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-6 bg-slate-900 transition dark:bg-white ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-6 bg-slate-900 transition dark:bg-white ${
+                isOpen ? "-translate-y-2 -rotate-45" : ""
+              }`}
+            ></span>
+          </div>
+        </button>
 
-        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-          <li>
-            <a href="#home" onClick={handleLinkClick}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#skills" onClick={handleLinkClick}>
-              Skills
-            </a>
-          </li>
-          <li>
-            <a href="#projects" onClick={handleLinkClick}>
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={handleLinkClick}>
-              Contact
-            </a>
-          </li>
-          <li>
-            <a href="#about" onClick={handleLinkClick}>
-              About
-            </a>
-          </li>
-          <li>
-            <button
-              type="button"
-              className="theme-toggle"
-              onClick={() =>
-                setTheme((prev) => (prev === "dark" ? "light" : "dark"))
-              }
-              aria-pressed={theme === "dark"}
-              aria-label="Toggle color theme"
-            >
-              {theme === "dark" ? (
-                <svg
-                  className="theme-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                </svg>
-              ) : (
-                <svg
-                  className="theme-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                </svg>
-              )}
-              {theme === "dark" ? "Light" : "Dark"} Mode
-            </button>
-          </li>
-        </ul>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-50 transition-opacity duration-300 ease-out ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <button
+          type="button"
+          className={`absolute inset-0 h-full w-full bg-slate-900/30 backdrop-blur-sm transition-opacity duration-300 ease-out dark:bg-slate-950/70 ${
+            isOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={toggleMenu}
+          aria-label="Close menu overlay"
+        />
+        <div
+          data-open={isOpen}
+          className="absolute right-6 top-6 z-10 w-[90vw] max-w-sm translate-y-2 rounded-3xl border border-slate-200 bg-white/95 p-6 text-slate-900 opacity-0 shadow-2xl transition-all duration-300 ease-out data-[open=true]:translate-y-0 data-[open=true]:opacity-100 dark:border-white/10 dark:bg-slate-950/95 dark:text-white"
+        >
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
+                Menu
+              </span>
+              <button
+                type="button"
+                onClick={toggleMenu}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition hover:text-sky-500 dark:border-white/10 dark:text-white dark:hover:text-sky-300"
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
+
+            <nav className="mt-6 flex flex-col gap-4 text-lg font-semibold">
+              <a href="#home" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                Home
+              </a>
+              <a href="#skills" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                Skills
+              </a>
+              <a href="#projects" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                Projects
+              </a>
+              <a href="#contact" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                Contact
+              </a>
+              <a href="#about" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
+                About
+              </a>
+            </nav>
+
+        </div>
       </div>
     </nav>
   );

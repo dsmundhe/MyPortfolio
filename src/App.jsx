@@ -18,34 +18,26 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="app">
       {loading ? (
         <Loader />
       ) : (
         <>
           <Navbar />
 
-          <div id="home">
+          <main>
             <HomePage />
-          </div>
 
-          <div id="skills">
             <MySkills />
-          </div>
 
-          <div id="projects">
             <ProjectsPage />
-          </div>
 
-          <div id="contact">
             <ContactPage />
-          </div>
 
-          <AboutPage />
+            <AboutPage />
+          </main>
 
-          <div>
-            <Footer />
-          </div>
+          <Footer />
         </>
       )}
     </div>

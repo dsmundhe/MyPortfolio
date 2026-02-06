@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { sendForm } from "@emailjs/browser"; // ✅ Correct import
+import { sendForm } from "@emailjs/browser";
 import { Mail, Phone, Send } from "lucide-react";
 
 export default function ContactPage() {
@@ -28,78 +28,75 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="bg-[#0f0f0f] py-12 px-4 md:px-16">
-      <h2 className="text-4xl font-bold text-center mb-10 text-white">
-        Get in Touch with Me!
-      </h2>
-
-      <div className="bg-[#1a1a1a] rounded-xl shadow-md p-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <div className="flex items-start gap-3">
-            <Phone className="text-green-400 mt-1" />
-            <div>
-              <p className="font-semibold text-white">Contact Number:</p>
-              <p className="text-gray-300">+91 8080255843</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <Mail className="text-green-400 mt-1" />
-            <div>
-              <p className="font-semibold text-white">Email me:</p>
-              <p className="text-gray-300">dipakmundhe2026@gmail.com</p>
-            </div>
-          </div>
+    <section id="contact" className="section">
+      <div className="section-inner">
+        <div className="section-header">
+          <h2>Get in Touch</h2>
+          <p>
+            Have an idea, a project, or just want to say hello? Let us connect
+            and build something meaningful together.
+          </p>
         </div>
 
-        {/* Contact Form */}
-        <div className="md:col-span-2">
-          <form ref={form} onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex flex-col md:flex-row gap-4">
+        <div className="contact-grid">
+          <div className="contact-card">
+            <h3>Contact Details</h3>
+            <div className="contact-detail">
+              <Phone />
+              <div>
+                <strong>Contact Number</strong>
+                <p>+91 8080255843</p>
+              </div>
+            </div>
+            <div className="contact-detail">
+              <Mail />
+              <div>
+                <strong>Email</strong>
+                <p>dipakmundhe2026@gmail.com</p>
+              </div>
+            </div>
+            <p className="hero-text">
+              I am responsive, collaborative, and always open to discussing new
+              opportunities or freelance work.
+            </p>
+          </div>
+
+          <div className="contact-card">
+            <h3>Send a Message</h3>
+            <form ref={form} onSubmit={handleSubmit} className="contact-form">
+              <div className="row">
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Your Name"
+                  required
+                />
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
               <input
                 type="text"
-                name="from_name"
-                placeholder="Your Name"
+                name="subject"
+                placeholder="Subject"
                 required
-                className="w-full px-4 py-3 border border-gray-700 rounded-md bg-[#111] text-white placeholder-gray-400"
               />
-              <input
-                type="email"
-                name="from_email"
-                placeholder="Your Email"
+              <textarea
+                rows="5"
+                name="message"
+                placeholder="Write your message"
                 required
-                className="w-full px-4 py-3 border border-gray-700 rounded-md bg-[#111] text-white placeholder-gray-400"
-              />
-            </div>
-            <input
-              type="text"
-              name="subject"
-              placeholder="Your Subject"
-              required
-              className="w-full px-4 py-3 border border-gray-700 rounded-md bg-[#111] text-white placeholder-gray-400"
-            />
-            <textarea
-              rows="5"
-              name="message"
-              placeholder="Write your message"
-              required
-              className="w-full px-4 py-3 border border-gray-700 rounded-md bg-[#111] text-white placeholder-gray-400"
-            ></textarea>
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition disabled:opacity-60"
-            >
-              {loading ? "Sending..." : "Send Me Message"} <Send size={16} />
-            </button>
+              ></textarea>
+              <button type="submit" disabled={loading} className="btn btn-primary">
+                {loading ? "Sending..." : "Send Message"} <Send size={16} />
+              </button>
 
-            {sent && (
-              <p className="text-green-400 font-medium pt-2">
-                ✅ Email sent successfully!
-              </p>
-            )}
-          </form>
+              {sent && <p className="pill">Email sent successfully!</p>}
+            </form>
+          </div>
         </div>
       </div>
     </section>

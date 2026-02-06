@@ -59,7 +59,15 @@ const projects = [
   },
 ];
 
-const categories = ["Show All", "Web App", "MERN", "E-commerce", "AI Chatbot", "EdTech", "AI/ML"];
+const categories = [
+  "Show All",
+  "Web App",
+  "MERN",
+  "E-commerce",
+  "AI Chatbot",
+  "EdTech",
+  "AI/ML",
+];
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState("Show All");
@@ -70,89 +78,63 @@ export default function ProjectsPage() {
       : projects.filter((proj) => proj.category === activeCategory);
 
   return (
-    <section className="py-12 px-4 md:px-16 bg-gray-900 text-white">
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold mb-4">Works & Projects</h2>
-        <p className="text-gray-300 max-w-xl mx-auto">
-          Explore a selection of my most meaningful work—each project showcases unique features,
-          technologies, and design precision crafted with passion and purpose.
-        </p>
-      </div>
+    <section id="projects" className="section">
+      <div className="section-inner">
+        <div className="section-header">
+          <h2>Works and Projects</h2>
+          <p>
+            Explore a selection of my most meaningful work. Each project
+            showcases unique features, technologies, and design precision
+            crafted with purpose.
+          </p>
+        </div>
 
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 text-sm font-medium transition ${
-              activeCategory === category
-                ? "text-green-400 border-b-2 border-green-400"
-                : "text-gray-300 hover:text-green-400"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+        <div className="filter-row">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`filter-btn ${
+                activeCategory === category ? "active" : ""
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 group"
-          >
-            <div className="relative">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-64 object-cover opacity-90"
-              />
-
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex-col justify-center items-center gap-2 opacity-0 group-hover:opacity-100 transition sm:flex hidden">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white text-black px-4 py-1 rounded-full text-sm font-medium hover:bg-green-500 hover:text-white transition"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white text-black px-4 py-1 rounded-full text-sm font-medium hover:bg-green-500 hover:text-white transition"
-                >
-                  GitHub Repo
-                </a>
+        <div className="projects-grid">
+          {filteredProjects.map((project) => (
+            <article key={project.id} className="project-card">
+              <div className="project-media">
+                <img src={project.image} alt={project.title} />
+                <div className="project-overlay">
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-sm"
+                  >
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost btn-sm"
+                  >
+                    GitHub Repo
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <div className="sm:hidden flex justify-center gap-4 py-2 bg-gray-800">
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-green-700 transition"
-              >
-                Live Demo
-              </a>
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-700 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-black transition"
-              >
-                GitHub Repo
-              </a>
-            </div>
-
-            <div className="p-4">
-              <p className="text-sm text-gray-400">{project.category}</p>
-              <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-            </div>
-          </div>
-        ))}
+              <div className="project-body">
+                <span className="project-category">{project.category}</span>
+                <h3 className="project-title">{project.title}</h3>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

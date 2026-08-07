@@ -1,0 +1,7 @@
+import { motion } from "framer-motion";
+import SectionHeading from "../components/SectionHeading";
+import Reveal from "../components/Reveal";
+import { skillGroups } from "../data/portfolio";
+
+const orbitSkills = ["React", "Java", "Node", "SQL", "Spring", "Git", "SAP", "AWS"];
+export default function Skills() { return <section id="skills" className="section skills"><div className="shell"><SectionHeading eyebrow="Capabilities" title={<>A toolkit in<br/><em>constant motion.</em></>}>A versatile foundation across frontend, backend, Java engineering, and analytics — selected to help ideas become useful software.</SectionHeading><div className="skills-layout"><div className="skill-orbit-wrap"><div className="skill-core"><span>Dipak&apos;s</span><b>Toolbox</b></div><div className="skill-orbit-ring"/>{orbitSkills.map((skill, i) => <motion.div key={skill} className={`orbit-skill orbit-skill--${i}`} animate={{ y: [0, i % 2 ? -7 : 7, 0] }} transition={{ duration: 3 + i * .25, repeat: Infinity, ease: "easeInOut" }}>{skill}</motion.div>)}</div><div className="skill-groups">{skillGroups.map((group, i) => { const Icon = group.icon; return <Reveal key={group.label} delay={i * .05} className="skill-group"><div className="skill-group-title"><span><Icon size={18}/></span><h3>{group.label}</h3></div><div>{group.skills.map((skill) => <span key={skill} className="skill-pill">{skill}</span>)}</div></Reveal>; })}</div></div></div></section>; }

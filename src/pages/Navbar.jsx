@@ -126,7 +126,7 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <nav className="mt-6 flex flex-col gap-4 text-lg font-semibold">
+              <nav className="mt-6 flex flex-col gap-4 font-semibold">
                 <a href="#home" onClick={handleLinkClick} className="hover:text-sky-500 dark:hover:text-sky-300">
                   Home
                 </a>

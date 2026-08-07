@@ -1,0 +1,7 @@
+import { ArrowDownRight, BadgeCheck, Compass, Layers3 } from "lucide-react";
+import SectionHeading from "../components/SectionHeading";
+import Reveal from "../components/Reveal";
+
+const milestones = [["01", "Build with purpose", "I start with the real problem, then find the cleanest useful path through it."], ["02", "Shape the experience", "I care about responsive interaction, visual rhythm, and details that make interfaces feel calm."], ["03", "Keep learning in public", "Each project is a chance to stretch technical range — from Java foundations to modern web products."]];
+
+export default function About() { return <section id="about" className="section about"><div className="shell about-layout"><div><SectionHeading eyebrow="A little context" title={<>Engineering products<br/>people want to <em>use.</em></>}>I&apos;m an early-career developer focused on the craft of making a product work beautifully — technically, visually, and for the person on the other side of the screen.</SectionHeading><Reveal className="about-principles"><div><Compass/><span>Curious by default</span></div><div><Layers3/><span>Systems-minded</span></div><div><BadgeCheck/><span>Detail-oriented</span></div></Reveal></div><div className="milestone-list">{milestones.map(([number, title, text], i) => <Reveal key={title} delay={i * .08} className="milestone"><span>{number}</span><div><h3>{title}<ArrowDownRight size={18}/></h3><p>{text}</p></div></Reveal>)}</div></div></section>; }

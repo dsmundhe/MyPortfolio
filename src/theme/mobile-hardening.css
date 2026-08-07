@@ -1,0 +1,22 @@
+/* Guardrails shared by responsive layouts; visual rules live in responsive.css. */
+html,
+body,
+#root {
+  max-width: 100%;
+}
+
+main,
+.section,
+.shell,
+.hero-inner,
+.hero-copy,
+.hero-visual,
+.about-layout,
+.skills-layout,
+.projects-head,
+.project-card,
+.project-info,
+.contact-grid,
+.experience-item {
+  min-width: 0;
+}

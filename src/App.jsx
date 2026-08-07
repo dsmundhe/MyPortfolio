@@ -1,58 +1,23 @@
-// App.jsx
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import ProjectsPage from "./pages/ProjectsPage";
-import Navbar from "./pages/Navbar";
-import HomePage from "./pages/HomePage";
-import ContactPage from "./pages/ContactPage";
-import MySkills from "./pages/MySkills";
-import Footer from "./pages/Footer";
-import Loader from "./pages/Loader";
-import AboutPage from "./pages/AboutPage";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import CommandPalette from "./components/CommandPalette";
+import Footer from "./layout/Footer";
+import Navbar from "./layout/Navbar";
+import { useScrollProgress } from "./hooks/useScrollProgress";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import Hero from "./sections/Hero";
 
-function App() {
-  const [loading, setLoading] = useState(true);
+const About = lazy(() => import("./sections/About"));
+const Skills = lazy(() => import("./sections/Skills"));
+const Projects = lazy(() => import("./sections/Projects"));
+const Experience = lazy(() => import("./sections/Experience"));
+const Contact = lazy(() => import("./sections/Contact"));
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 500);
-    return () => clearTimeout(timeout);
-  }, []);
+function Loader() { return <div className="section-loader"><span/><span/><span/></div>; }
 
-  return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-sky-300/40 blur-3xl dark:bg-sky-400/20"></div>
-        <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-fuchsia-300/30 blur-3xl dark:bg-fuchsia-400/20"></div>
-        <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-400/10"></div>
-      </div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Navbar />
-
-          <motion.main
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col"
-          >
-            <HomePage />
-
-            <MySkills />
-
-            <ProjectsPage />
-
-            <ContactPage />
-
-            <AboutPage />
-          </motion.main>
-
-          <Footer />
-        </>
-      )}
-    </div>
-  );
+export default function App() {
+  const { progress } = useScrollProgress(); const [loading, setLoading] = useState(true); const [command, setCommand] = useState(false);
+  useSmoothScroll();
+  useEffect(() => { const timer = setTimeout(() => setLoading(false), 650); const keys = (event) => { if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); setCommand((open) => !open); } if (event.key === "Escape") setCommand(false); }; window.addEventListener("keydown", keys); return () => { clearTimeout(timer); window.removeEventListener("keydown", keys); }; }, []);
+  return <><AnimatePresence>{loading && <motion.div className="intro" initial={{ opacity: 1 }} exit={{ opacity: 0, transition: { delay: .15, duration: .45 } }}><span className="intro-mark">D</span><div><i/><i/><i/></div></motion.div>}</AnimatePresence><div className="scroll-progress" style={{ transform: `scaleX(${progress})` }}/><div className="noise"/><Navbar onCommand={() => setCommand(true)}/><main><Hero/><Suspense fallback={<Loader/>}><About/><Skills/><Projects/><Experience/><Contact/></Suspense></main><Footer/><CommandPalette open={command} onClose={() => setCommand(false)}/></>;
 }
-
-export default App;

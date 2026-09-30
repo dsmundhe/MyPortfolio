@@ -138,6 +138,7 @@
   transition: color .2s ease, background .2s ease, border-color .2s ease;
 }
 .portfolio-nav__toggle:hover { background: rgba(255, 255, 255, .1); }
+.portfolio-nav__toggle-icon { display: grid; place-items: center; line-height: 0; }
 .portfolio-nav :is(button, a):focus-visible,
 .portfolio-menu button:focus-visible {
   outline: 2px solid #83b5b4;
@@ -237,8 +238,8 @@
 }
 @media (max-width: 740px) {
   .portfolio-nav {
-    top: 12px;
-    width: calc(100% - 24px);
+    top: 14px;
+    width: calc(100% - 36px);
     min-height: 54px;
     gap: 8px;
     padding: 7px 8px 7px 12px;
@@ -248,12 +249,17 @@
   .portfolio-nav__actions { gap: 7px; }
   .portfolio-nav__contact { min-height: 36px; gap: 7px; padding: 0 12px; }
   .portfolio-nav__toggle { display: grid; }
-  .portfolio-menu { top: 76px; }
+  .portfolio-menu {
+    top: 80px;
+    width: min(440px, calc(100% - 40px));
+    border-radius: 22px;
+  }
 }
 @media (max-width: 360px) {
   .portfolio-nav__name { font-size: 13px; }
   .portfolio-nav__contact { min-height: 34px; padding: 0 9px; font-size: 9px; }
   .portfolio-nav__toggle { width: 35px; height: 35px; }
+  .portfolio-nav { width: calc(100% - 32px); padding-right: 6px; padding-left: 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-nav,
@@ -262,3 +268,5 @@
   .portfolio-nav__toggle,
   .portfolio-menu > button { transition-duration: .01ms; }
 }
+
+

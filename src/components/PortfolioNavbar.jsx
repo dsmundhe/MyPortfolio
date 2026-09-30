@@ -119,7 +119,7 @@ export default function PortfolioNavbar({ onCommand }) {
             aria-expanded={open}
             aria-controls="portfolio-mobile-menu"
           >
-            {open ? <X size={19} /> : <Menu size={19} />}
+            <AnimatePresence mode="wait" initial={false}><motion.span key={open ? "close" : "open"} className="portfolio-nav__toggle-icon" initial={reducedMotion ? false : { opacity: 0, rotate: -35, scale: 0.75 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 35, scale: 0.75 }} transition={{ duration: reducedMotion ? 0.01 : 0.16 }}>{open ? <X size={19} /> : <Menu size={19} />}</motion.span></AnimatePresence>
           </button>
         </div>
       </header>
@@ -130,23 +130,26 @@ export default function PortfolioNavbar({ onCommand }) {
             id="portfolio-mobile-menu"
             className={`portfolio-menu ${active === "home" ? "portfolio-menu--home" : ""}`}
             aria-label="Mobile navigation"
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.985 }}
-            transition={{ duration: reducedMotion ? 0.01 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: -10, x: "-50%", scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
+            exit={{ opacity: 0, y: -8, x: "-50%", scale: 0.985 }}
+            transition={{ duration: reducedMotion ? 0.01 : 0.3, delay: reducedMotion ? 0 : 0.02, ease: [0.22, 1, 0.36, 1] }}
           >
             {navItems.map(({ label, id }, index) => (
-              <button
+              <motion.button
                 type="button"
                 key={id}
                 onClick={() => navigate(id)}
                 className={active === id ? "is-active" : ""}
                 aria-current={active === id ? "location" : undefined}
+                initial={reducedMotion ? false : { opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reducedMotion ? 0.01 : 0.22, delay: reducedMotion ? 0 : (index + 1) * 0.045, ease: [0.22, 1, 0.36, 1] }}
               >
                 <span className="portfolio-menu__number">0{index + 1}</span>
                 <span>{label}</span>
                 <ArrowUpRight size={15} aria-hidden="true" />
-              </button>
+              </motion.button>
             ))}
             {onCommand && (
               <button type="button" className="portfolio-menu__command" onClick={() => { setOpen(false); onCommand(); }}>
@@ -159,4 +162,7 @@ export default function PortfolioNavbar({ onCommand }) {
     </>
   );
 }
+
+
+
 

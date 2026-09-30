@@ -13,6 +13,10 @@ const Projects = lazy(() => import("./sections/Projects"));
 const Experience = lazy(() => import("./sections/Experience"));
 const Contact = lazy(() => import("./sections/Contact"));
 
+const LANDING_LOADER_TOTAL_MS = 2800;
+const LANDING_LOADER_EXIT_DELAY_MS = 150;
+const LANDING_LOADER_EXIT_DURATION_MS = 450;
+
 function Loader() {
   return <div className="section-loader" role="status" aria-label="Loading portfolio sections"><span /><span /><span /></div>;
 }
@@ -24,7 +28,7 @@ function LandingLoader() {
       role="status"
       aria-label="Loading portfolio"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { delay: 0.15, duration: 0.45 } }}
+      exit={{ opacity: 0, transition: { delay: LANDING_LOADER_EXIT_DELAY_MS / 1000, duration: LANDING_LOADER_EXIT_DURATION_MS / 1000 } }}
     >
       <div className="intro-lockup">
         <span className="intro-mark" aria-hidden="true">D</span>
@@ -47,7 +51,7 @@ export default function App() {
   useSmoothScroll();
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 650);
+    const timer = setTimeout(() => setLoading(false), LANDING_LOADER_TOTAL_MS - LANDING_LOADER_EXIT_DELAY_MS - LANDING_LOADER_EXIT_DURATION_MS);
     const keys = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
@@ -84,4 +88,6 @@ export default function App() {
     </>
   );
 }
+
+
 

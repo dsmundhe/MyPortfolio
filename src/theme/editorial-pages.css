@@ -588,3 +588,182 @@ body .intro .intro-progress {
 @media (prefers-reduced-motion: reduce) {
   .intro-progress > span { width: 100%; animation: none; }
 }
+
+.editorial-hero__socials .editorial-hero__resume {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.resume-dialog-overlay {
+  position: fixed;
+  z-index: 110;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  background: rgba(31, 37, 33, .42);
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+.resume-dialog {
+  position: relative;
+  width: min(440px, 100%);
+  border: 1px solid #d5d8d1;
+  border-radius: 4px;
+  background: #f8f7f3;
+  padding: 38px 32px 30px;
+  color: #242a27;
+  box-shadow: 0 24px 80px rgba(28, 36, 30, .2);
+}
+.resume-dialog__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #d8dad3;
+  border-radius: 50%;
+  background: transparent;
+  color: #56615a;
+  transition: background .18s ease, color .18s ease;
+}
+.resume-dialog__close:hover { background: #e9ebe5; color: #242a27; }
+.resume-dialog__eyebrow {
+  margin: 0 0 10px;
+  color: #61796e;
+  font: 9px "DM Mono", monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.resume-dialog h2 {
+  margin: 0;
+  color: #242a27;
+  font-size: clamp(1.8rem, 7vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: 1.1;
+}
+.resume-dialog__copy {
+  margin: 12px 0 23px;
+  color: #68706b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.resume-dialog__actions { display: grid; gap: 9px; }
+.resume-dialog__actions a {
+  display: grid;
+  min-height: 49px;
+  grid-template-columns: 20px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #d4d8d1;
+  border-radius: 2px;
+  background: #efeee8;
+  padding: 0 14px;
+  color: #35423b;
+  font-size: 11px;
+  font-weight: 700;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+.resume-dialog__actions a:first-child {
+  border-color: #262d29;
+  background: #262d29;
+  color: #f8f7f3;
+}
+.resume-dialog__actions a:hover {
+  border-color: #527872;
+  background: #e4e9e3;
+  color: #263b34;
+}
+.resume-dialog__actions a:first-child:hover {
+  background: #456a62;
+  color: #fff;
+}
+.resume-dialog :is(button, a):focus-visible {
+  outline: 2px solid #527872;
+  outline-offset: 3px;
+}
+@media (max-width: 420px) {
+  .resume-dialog-overlay { padding: 16px; }
+  .resume-dialog { padding: 36px 22px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume-dialog__close,
+  .resume-dialog__actions a { transition-duration: .01ms; }
+}
+
+.resume-dialog__actions a[aria-disabled="true"] {
+  cursor: wait;
+  opacity: .68;
+}
+.resume-dialog__status {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 9px;
+  margin: 13px 0 0;
+  color: #5c766a;
+  font-size: 10px;
+  font-weight: 600;
+}
+.resume-download__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.resume-download__dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #62887a;
+  animation: resume-dot-hop .62s ease-in-out infinite;
+}
+.resume-download__dots i:nth-child(2) { animation-delay: .1s; }
+.resume-download__dots i:nth-child(3) { animation-delay: .2s; }
+@keyframes resume-dot-hop {
+  0%, 60%, 100% { opacity: .48; transform: translateY(1px) scale(.82); }
+  30% { opacity: 1; transform: translateY(-3px) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume-download__dots i { animation: none; opacity: .8; }
+}
+
+.editorial-hero__socials .editorial-hero__resume {
+  min-height: 32px;
+  gap: 6px;
+  border: 1px solid #c7d5ca;
+  border-radius: 999px;
+  background: #e3ebe3;
+  padding: 0 11px;
+  color: #34544a;
+  font-size: 10px;
+  font-weight: 700;
+  transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.editorial-hero__socials .editorial-hero__resume:hover {
+  transform: translateY(-1px);
+  border-color: #9fb9a9;
+  background: #d4e3d8;
+  color: #233f35;
+}
+.resume-dialog__actions a[aria-disabled="true"] {
+  border-color: #adc9b7;
+  background: #dbe9df;
+  color: #2f4d3e;
+  opacity: 1;
+}
+.resume-dialog__status {
+  min-height: 38px;
+  border: 1px solid #c6d8ca;
+  border-radius: 2px;
+  background: #e5eee5;
+  padding: 0 11px;
+  color: #355b49;
+}
+@media (prefers-reduced-motion: reduce) {
+  .editorial-hero__socials .editorial-hero__resume { transition-duration: .01ms; }
+}

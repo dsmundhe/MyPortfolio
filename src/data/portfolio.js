@@ -1,4 +1,4 @@
-import {
+﻿import {
   BarChart3, Bot, Braces, Code2, Database, Globe2, Layers3,
   LayoutDashboard, ShieldCheck, Sparkles, TerminalSquare, WandSparkles,
 } from "lucide-react";
@@ -10,7 +10,7 @@ export const profile = {
   email: "dipakmundhe2026@gmail.com",
   github: "https://github.com/dsmundhe",
   linkedin: "https://www.linkedin.com/in/dipak-samadhan-mundhe-b2301425b/",
-  resume: "/resume.png",
+  resume: "/Dipak_Mundhe_Resume.pdf",
 };
 
 export const navigation = [
@@ -36,7 +36,7 @@ export const projects = [
 
 export const timeline = [
   { period: "Now", title: "SAP Analytics Cloud Intern", company: "Cognizant", text: "Supporting dashboard development, reporting, and business intelligence work with an emphasis on clear data storytelling.", icon: LayoutDashboard },
-  { period: "2024 — Now", title: "MERN Stack Developer", company: "Independent projects", text: "Building full-stack web products, evolving frontend systems, and turning product concepts into responsive experiences.", icon: Code2 },
+  { period: "2024 â€” Now", title: "MERN Stack Developer", company: "Independent projects", text: "Building full-stack web products, evolving frontend systems, and turning product concepts into responsive experiences.", icon: Code2 },
   { period: "Continuous", title: "Hackathons & learning", company: "Hands-on practice", text: "Exploring AI, Java engineering, and product problem-solving through focused builds and technical challenges.", icon: Sparkles },
 ];
 
@@ -50,9 +50,9 @@ export const services = [
 ];
 
 export const certificates = [
-  "SAP Analytics Cloud — practical dashboard & reporting experience",
-  "Java & Object-Oriented Programming — continuous practice",
-  "MERN Stack Development — independent product builds",
+  "SAP Analytics Cloud â€” practical dashboard & reporting experience",
+  "Java & Object-Oriented Programming â€” continuous practice",
+  "MERN Stack Development â€” independent product builds",
 ];
 
 export const commandItems = [
@@ -61,3 +61,4 @@ export const commandItems = [
   { label: "Read my experience", target: "experience", shortcut: "E" },
   { label: "Start a conversation", target: "contact", shortcut: "C" },
 ];
+
